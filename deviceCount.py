@@ -8,6 +8,3 @@ def devCount():
     num=len(coms)
     return num
 
-
-ardu=devCount()
-print(ardu)
