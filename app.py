@@ -9,12 +9,12 @@ dep = Department()
 @app.context_processor
 def inject_user():
 		return dict(depID = dep.depID)
-
+dev = devCount()
 @app.route("/")
 def renderRoot():
-	if not dep.depID:
-		return render_template("area.html")
-	return render_template("index.html")
+	if(not dep.depID):
+	    return render_template("area.html")       
+	return render_template("index.html", dev = dev)
 
 @app.route("/setDept", methods = ["POST"])
 def setDevice():
