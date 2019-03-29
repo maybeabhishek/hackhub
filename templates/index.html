@@ -8,26 +8,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <link rel="stylesheet" href="/static/css/style.css">
+
+    <script src="/static/lib/p5/p5.min.js"></script>
 </head>
 
 <body>
     {% include 'navbar.html' %}
     <div class="container">
-        {% for i in range(0, dev)%}
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+        <input type="hidden" id = "name" value="{{dev}}">
+        <div id="draw">
+        </div>
+        <div class="card-columns mt-4">
+            {% for i in range(0, dev)%}
+            <div class="card">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title that wraps to a new line</h5>
+                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
+                        additional
+                        content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+                {%endfor%}
             </div>
         </div>
-        {%endfor%}
-    </div>
-
-    <!-- Scripts -->
+        
+        <!-- Scripts -->
+        
+        <script src="/static/js/sketch.js"></script>
     <script src="/static/lib/jquery.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
 </body>
