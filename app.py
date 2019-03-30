@@ -3,13 +3,15 @@ from flask import Flask, render_template, jsonify, request, redirect, url_for
 from department import Department
 from deviceCount import devCount
 from random import randint
+from device import Device
 
 app = Flask(__name__)
 dep = Department()
+device = []
 
 @app.context_processor
 def inject_user():
-		return dict(depID = dep.depID)
+	return dict(depID = dep.depID)
 
 
 
@@ -22,6 +24,9 @@ def renderRoot():
 @app.route("/update")
 def update():
     dev = devCount()
+    for i in range(dev):
+        device.append(Device(100+i,"Connected"))
+    
     return render_template("index.html",dev = dev)
 
 @app.route("/setDept", methods = ["POST"])
