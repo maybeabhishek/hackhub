@@ -2,6 +2,7 @@ import time, requests
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from department import Department
 from deviceCount import devCount
+from random import randint
 
 app = Flask(__name__)
 dep = Department()
@@ -9,12 +10,19 @@ dep = Department()
 @app.context_processor
 def inject_user():
 		return dict(depID = dep.depID)
-dev = devCount()
+
+
+
 @app.route("/")
 def renderRoot():
 	if(not dep.depID):
 	    return render_template("area.html")       
-	return render_template("index.html", dev = dev)
+	return redirect(url_for("update"))
+
+@app.route("/update")
+def update():
+    dev = devCount()
+    return render_template("index.html",dev = dev)
 
 @app.route("/setDept", methods = ["POST"])
 def setDevice():
@@ -22,6 +30,8 @@ def setDevice():
 		dep.setDepID(request.form['depID'])
 		print("Device set as: ", dep.depID)
 		return redirect(url_for("renderRoot"))
+
+
 
 # =========
 # Start App

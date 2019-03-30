@@ -15,28 +15,44 @@
 <body>
     {% include 'navbar.html' %}
     <div class="container">
-        <input type="hidden" id = "name" value="{{dev}}">
+        <h1 class="mt-4">Network Layout</h1>
+        <hr>
+        <input type="hidden" id="name" value="{{dev}}">
         <div id="draw">
         </div>
+        <h1 class="mt-4">System Status</h1>
+        <hr>
         <div class="card-columns mt-4">
             {% for i in range(0, dev)%}
             <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                <img class="card-img-top" src="/static/img/arduino.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Card title that wraps to a new line</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional
-                        content. This content is a little bit longer.</p>
-                    </div>
+                    <h5 class="card-title">Arduino {{i}}</h5>
+                    <p class="card-text">Status: <span class="text text-success">Connected</span></p>
                 </div>
-                {%endfor%}
+            </div>
+            {%endfor%}
+        </div>
+        <h1 class="mt-4">Sensor Data</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <iframe class="embed-responsive-item" width="450" height="260" style="border: 1px solid #cccccc;"
+                    src="https://thingspeak.com/channels/745567/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Current+Levels&type=line"></iframe>
+            </div>
+            <div class="col-md-6">
+                <iframe width="450" height="260" style="border: 1px solid #cccccc;"
+                    src="https://thingspeak.com/channels/745567/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
             </div>
         </div>
-        
-        <!-- Scripts -->
-        
-        <script src="/static/js/sketch.js"></script>
+    </div>
     <script src="/static/lib/jquery.min.js"></script>
+
+
+    <!-- Scripts -->
+    <script src="/static/js/sensor.js"></script>
+    <script src="/static/js/sketch.js"></script>
     <script src="/static/js/bootstrap.js"></script>
 </body>
 
