@@ -1,16 +1,16 @@
 from flask import Flask, render_template, jsonify, request, redirect, url_for
-
+from motorspeed import *
 app = Flask(__name__)
 
 @app.route("/")
 def renderRoot():      
 	return redirect(url_for("update"))
 
-@app.route("/sendData",method = ['GET'])
+@app.route("/sendData",methods = ['GET'])
 def update():
     if request.method == 'GET':
-        data = {}
-        data['val']=4
+        dataser = motser()
+        data['val']=dataser[1]
         return jsonify(data)
 
 # =========
