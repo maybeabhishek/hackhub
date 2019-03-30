@@ -6,6 +6,7 @@ from random import randint
 from device import Device
 from getRequest import getData
 from getPi import getPi
+import os
 
 app = Flask(__name__)
 dep = Department()
@@ -40,6 +41,11 @@ def setDevice():
 		print("Device set as: ", dep.depID)
 		return redirect(url_for("renderRoot"))
 
+@app.route("/delete")
+def delete():
+    out = os.popen("echo 'Disconnect\r\n' > /dev/ttyACM0").read()
+    return redirect(url_for("update"))
+    
 @app.route("/vis")
 def vis():
     return render_template("vis.html")
