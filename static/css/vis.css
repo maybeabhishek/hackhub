@@ -1,0 +1,18 @@
+body{
+    background-color:#333333;
+  }
+  
+  #canvasHolder{
+    width:700px;
+    height:450px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom:0;
+  }
+  
+  #checkbox{
+    color:white;
+  }

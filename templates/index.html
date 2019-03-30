@@ -18,6 +18,7 @@
         <h1 class="mt-4">Network Layout</h1>
         <hr>
         <input type="hidden" id="name" value="{{dev}}">
+        <input type="hidden" id="name1" value="{{devPi}}">
         <div id="draw">
         </div>
         <h1 class="mt-4">System Status</h1>
@@ -28,6 +29,15 @@
                 <img class="card-img-top" src="/static/img/arduino.jpg" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Arduino {{i}}</h5>
+                    <p class="card-text">Status: <span class="text text-success">Connected</span></p>
+                </div>
+            </div>
+            {%endfor%}
+            {% for i in range(0, devPi)%}
+            <div class="card">
+                <img class="card-img-top" src="/static/img/rasp.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Rasp Pi {{i}}</h5>
                     <p class="card-text">Status: <span class="text text-success">Connected</span></p>
                 </div>
             </div>

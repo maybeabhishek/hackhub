@@ -5,6 +5,7 @@ from deviceCount import devCount
 from random import randint
 from device import Device
 from getRequest import getData
+from getPi import getPi
 
 app = Flask(__name__)
 dep = Department()
@@ -25,11 +26,12 @@ def renderRoot():
 @app.route("/update")
 def update():
     dev = devCount()
+    devPi = getPi()
     for i in range(dev):
         device.append(Device(100+i,"Connected"))
     data = getData()
     print(data['val'])
-    return render_template("index.html",dev = dev)
+    return render_template("index.html",dev = dev, devPi = devPi)
 
 @app.route("/setDept", methods = ["POST"])
 def setDevice():
@@ -38,7 +40,9 @@ def setDevice():
 		print("Device set as: ", dep.depID)
 		return redirect(url_for("renderRoot"))
 
-
+@app.route("/vis")
+def vis():
+    return render_template("vis.html")
 
 # =========
 # Start App

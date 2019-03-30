@@ -9,6 +9,8 @@ class Device():
     def setSensorValue(self, curr, mv):
         self.curr = curr
         self.mv = mv
+
+        
     
 
 
