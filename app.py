@@ -31,8 +31,12 @@ def update():
     for i in range(dev):
         device.append(Device(100+i,"Connected"))
     data = getData()
-    print(data['val'])
-    return render_template("index.html",dev = dev, devPi = devPi)
+    print(data)
+    if float(data['curr']) > 0.5:
+        d = True
+    else:
+        d = False
+    return render_template("index.html",dev = dev, devPi = devPi, curr = d)
 
 @app.route("/setDept", methods = ["POST"])
 def setDevice():
@@ -49,6 +53,10 @@ def delete():
 @app.route("/vis")
 def vis():
     return render_template("vis.html")
+
+@app.route("/alexa")
+def alex():
+    return render_template("form.html")
 
 # =========
 # Start App
